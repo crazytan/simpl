@@ -5,3 +5,6 @@ bin/
 *.aux
 *.synctex.gz
 .settings/
+*.iml
+*.ipr
+*.iws
