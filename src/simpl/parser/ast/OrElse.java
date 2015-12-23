@@ -28,7 +28,11 @@ public class OrElse extends BinaryExpr {
 
     @Override
     public Value eval(State s) throws RuntimeError {
-        // TODO
-        return null;
+        Value v1 = l.eval(s);
+        if (v1 instanceof BoolValue) {
+            if (((BoolValue) v1).b) return v1;
+            return r.eval(s);
+        }
+        throw new RuntimeError("operand is not bool");
     }
 }

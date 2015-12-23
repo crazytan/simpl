@@ -7,6 +7,7 @@ public abstract class Substitution {
     public abstract Type apply(Type t);
 
     private static final class Identity extends Substitution {
+        @Override
         public Type apply(Type t) {
             return t;
         }
@@ -21,6 +22,7 @@ public abstract class Substitution {
             this.t = t;
         }
 
+        @Override
         public Type apply(Type b) {
             return b.replace(a, t);
         }
@@ -34,6 +36,7 @@ public abstract class Substitution {
             this.g = g;
         }
 
+        @Override
         public Type apply(Type t) {
             return f.apply(g.apply(t));
         }
@@ -51,6 +54,7 @@ public abstract class Substitution {
 
     public TypeEnv compose(final TypeEnv E) {
         return new TypeEnv() {
+            @Override
             public Type get(Symbol x) {
                 return apply(E.get(x));
             }
