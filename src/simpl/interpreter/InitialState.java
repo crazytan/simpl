@@ -16,12 +16,13 @@ public class InitialState extends State {
     }
 
     private static Env initialEnv(Env E) {
-        // TODO
         E = new Env(E, Symbol.symbol("fst"), new fst());
         E = new Env(E, Symbol.symbol("snd"), new snd());
         E = new Env(E, Symbol.symbol("hd"), new hd());
         E = new Env(E, Symbol.symbol("tl"), new tl());
-
+        E = new Env(E, Symbol.symbol("iszero"), new iszero());
+        E = new Env(E, Symbol.symbol("pred"), new pred());
+        E = new Env(E, Symbol.symbol("succ"), new succ());
         return E;
     }
 }

@@ -20,6 +20,7 @@ public class hd extends FunValue {
         super(Env.empty, Symbol.symbol("x"), new UnaryExpr(new Name(Symbol.symbol("x"))) {
             @Override
             public TypeResult typecheck(TypeEnv E) throws TypeError {
+                // TODO
                 return null;
             }
 
