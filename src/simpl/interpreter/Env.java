@@ -15,10 +15,12 @@ public class Env {
     }
 
     public static Env empty = new Env() {
+        @Override
         public Value get(Symbol y) {
             return null;
         }
 
+        @Override
         public Env clone() {
             return this;
         }

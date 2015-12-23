@@ -30,7 +30,12 @@ public class Name extends Expr {
 
     @Override
     public Value eval(State s) throws RuntimeError {
-        // TODO
-        return null;
+        Value v = s.E.get(x);
+        if (v == null) throw new RuntimeError("name not found");
+        if (v instanceof RecValue) {
+            RecValue _v = (RecValue) v;
+            return (new Rec(_v.x, _v.e)).eval(State.of(_v.E, s.M, s.p));
+        }
+        return v;
     }
 }
