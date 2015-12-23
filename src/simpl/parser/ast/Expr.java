@@ -13,9 +13,9 @@ public abstract class Expr {
 
     /**
      * relies on side effect
-     * 
+     *
      * @param s
-     * @return
+     * @return value
      * @throws RuntimeError
      */
     public abstract Value eval(State s) throws RuntimeError;

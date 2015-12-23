@@ -16,7 +16,7 @@ public class Interpreter {
             Parser parser = new Parser(inp);
             java_cup.runtime.Symbol parseTree = parser.parse();
             Expr program = (Expr) parseTree.value;
-            System.out.println(program.typecheck(new DefaultTypeEnv()).t);
+            //System.out.println(program.typecheck(new DefaultTypeEnv()).t);
             System.out.println(program.eval(new InitialState()));
         }
         catch (SyntaxError e) {
