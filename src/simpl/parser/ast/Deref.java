@@ -30,7 +30,10 @@ public class Deref extends UnaryExpr {
 
     @Override
     public Value eval(State s) throws RuntimeError {
-        // TODO
-        return null;
+        Value v = e.eval(s);
+        if (v instanceof RefValue) {
+            return s.M.get(((RefValue) v).p);
+        }
+        throw new RuntimeError("operand is not ref");
     }
 }

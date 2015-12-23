@@ -29,7 +29,11 @@ public class Assign extends BinaryExpr {
 
     @Override
     public Value eval(State s) throws RuntimeError {
-        // TODO
-        return null;
+        Value v = l.eval(s);
+        if (v instanceof RefValue) {
+            s.M.put(((RefValue) v).p, r.eval(s));
+            return Value.UNIT;
+        }
+        throw new RuntimeError("operand is not ref");
     }
 }
