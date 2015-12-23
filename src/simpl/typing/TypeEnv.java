@@ -8,6 +8,7 @@ public abstract class TypeEnv {
 
     public static TypeEnv of(final TypeEnv E, final Symbol x, final Type t) {
         return new TypeEnv() {
+            @Override
             public Type get(Symbol x1) {
                 if (x == x1) return t;
                 return E.get(x1);

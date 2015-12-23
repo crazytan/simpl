@@ -28,7 +28,10 @@ public class Not extends UnaryExpr {
 
     @Override
     public Value eval(State s) throws RuntimeError {
-        // TODO
-        return null;
+        Value v = e.eval(s);
+        if (v instanceof BoolValue) {
+            return new BoolValue(!((BoolValue) v).b);
+        }
+        throw new RuntimeError("operand is not bool");
     }
 }

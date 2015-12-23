@@ -17,8 +17,11 @@ public class Mul extends ArithExpr {
 
     @Override
     public Value eval(State s) throws RuntimeError {
-        IntValue v1 = (IntValue) l.eval(s);
-        IntValue v2 = (IntValue) r.eval(s);
-        return new IntValue(v1.n * v2.n);
+        Value v1 = l.eval(s);
+        Value v2 = r.eval(s);
+        if ((v1 instanceof IntValue) && (v2 instanceof IntValue)) {
+            return new IntValue(((IntValue) v1).n * ((IntValue) v2).n);
+        }
+        throw new RuntimeError("operand is not int");
     }
 }
