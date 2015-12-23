@@ -10,13 +10,21 @@ public class ConsValue extends Value {
     }
 
     public String toString() {
-        // TODO
-        return null;
+        int cnt = 1;
+        Value v = v2;
+        while (v instanceof ConsValue) {
+            cnt++;
+            v = ((ConsValue) v2).v2;
+        }
+        return "list@" + cnt;
     }
 
     @Override
     public boolean equals(Object other) {
-        // TODO
+        if (other instanceof ConsValue) {
+            ConsValue v = (ConsValue) other;
+            return (v1.equals(v.v1)) && (v2.equals(v.v2));
+        }
         return false;
     }
 }
