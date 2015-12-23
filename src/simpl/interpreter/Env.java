@@ -31,8 +31,8 @@ public class Env {
     }
 
     public Value get(Symbol y) {
-        // TODO
-        return null;
+        if (x == y) return v;
+        return E.get(y);
     }
 
     public Env clone() {

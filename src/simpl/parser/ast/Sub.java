@@ -17,7 +17,8 @@ public class Sub extends ArithExpr {
 
     @Override
     public Value eval(State s) throws RuntimeError {
-        // TODO
-        return null;
+        IntValue v1 = (IntValue) l.eval(s);
+        IntValue v2 = (IntValue) r.eval(s);
+        return new IntValue(v1.n - v2.n);
     }
 }
