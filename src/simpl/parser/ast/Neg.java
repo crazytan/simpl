@@ -28,7 +28,10 @@ public class Neg extends UnaryExpr {
 
     @Override
     public Value eval(State s) throws RuntimeError {
-        // TODO
-        return null;
+        Value v = e.eval(s);
+        if (v instanceof IntValue) {
+            return new IntValue(-((IntValue) v).n);
+        }
+        throw new RuntimeError("operand is not int");
     }
 }

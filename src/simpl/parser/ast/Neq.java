@@ -17,7 +17,8 @@ public class Neq extends EqExpr {
 
     @Override
     public Value eval(State s) throws RuntimeError {
-        // TODO
-        return null;
+        Value e1 = l.eval(s);
+        Value e2 = r.eval(s);
+        return new BoolValue(!e1.equals(e2));
     }
 }
