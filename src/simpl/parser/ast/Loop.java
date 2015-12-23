@@ -31,7 +31,11 @@ public class Loop extends Expr {
 
     @Override
     public Value eval(State s) throws RuntimeError {
-        // TODO
-        return null;
+        Value v = e1.eval(s);
+        if (v instanceof BoolValue) {
+            if (!((BoolValue) v).b) return Value.UNIT;
+            return (new Seq(e2, this)).eval(s);
+        }
+        throw new RuntimeError("operand is not bool");
     }
 }

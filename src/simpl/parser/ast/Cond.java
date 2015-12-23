@@ -32,7 +32,15 @@ public class Cond extends Expr {
 
     @Override
     public Value eval(State s) throws RuntimeError {
-        // TODO
-        return null;
+        Value v = e1.eval(s);
+        if (v instanceof BoolValue) {
+            if (((BoolValue) v).b) {
+                return e2.eval(s);
+            }
+            else {
+                return e3.eval(s);
+            }
+        }
+        throw new RuntimeError("operand is not bool");
     }
 }

@@ -25,7 +25,7 @@ public class Seq extends BinaryExpr {
 
     @Override
     public Value eval(State s) throws RuntimeError {
-        // TODO
-        return null;
+        l.eval(s);
+        return r.eval(s);
     }
 }
