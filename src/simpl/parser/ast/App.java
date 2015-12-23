@@ -32,7 +32,12 @@ public class App extends BinaryExpr {
 
     @Override
     public Value eval(State s) throws RuntimeError {
-        // TODO
-        return null;
+        Value v1 = l.eval(s);
+        if (v1 instanceof FunValue) {
+            Value v2 = r.eval(s);
+            FunValue f = (FunValue) v1;
+            return f.e.eval(State.of(new Env(f.E, f.x, v2), s.M, s.p));
+        }
+        throw new RuntimeError("operand is not func");
     }
 }
